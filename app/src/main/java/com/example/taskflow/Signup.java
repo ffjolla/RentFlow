@@ -1,3 +1,5 @@
+package com.example.taskflow;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.regex.Pattern;
 
-public class SignupActivity extends AppCompatActivity {
+public class Signup extends AppCompatActivity {
 
     EditText emailEditText, firstNameEditText, lastNameEditText, passwordEditText, confirmPasswordEditText;
     Button signupButton, backToLoginButton;
