@@ -75,3 +75,4 @@ public class DataBase extends SQLiteOpenHelper {
         cursor.close();
         return exists;
     }
+}
