@@ -1,4 +1,4 @@
 package com.example.taskflow;
 
-public class LoginActivity {
+public class SignupActivity {
 }
