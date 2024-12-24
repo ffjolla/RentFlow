@@ -75,4 +75,43 @@ public class DataBase extends SQLiteOpenHelper {
         cursor.close();
         return exists;
     }
+
+    public boolean insertTask(String email, String task) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("email", email);
+        contentValues.put("task", task);
+        long result = db.insert("tasks", null, contentValues);
+        return result != -1;
+    }
+
+    public ArrayList<String> getTasks(String email) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<String> tasks = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT task FROM tasks WHERE email=?", new String[]{email});
+        while (cursor.moveToNext()) {
+            tasks.add(cursor.getString(0));
+        }
+        cursor.close();
+        return tasks;
+    }
+
+    public boolean updatePassword(String email, String newPassword) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        // Hash the new password before storing it
+        String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+        contentValues.put("password", hashedPassword);
+
+        // Update the password for the given email
+        int rowsAffected = db.update("adminUser", contentValues, "email=?", new String[]{email});
+        return rowsAffected > 0; // Return true if the password was updated successfully
+    }
+
+    public boolean deleteTask(String email, String task) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int rowsDeleted = db.delete("tasks", "email=? AND task=?", new String[]{email, task});
+        return rowsDeleted > 0;
+    }
 }
