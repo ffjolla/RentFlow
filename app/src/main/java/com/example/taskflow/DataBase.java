@@ -4,7 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -46,26 +48,39 @@ public class DataBase extends SQLiteOpenHelper {
 
     public Boolean validateUser(String email, String password) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT password FROM adminUser WHERE email=?", new String[]{email});
-        if (cursor != null && cursor.moveToFirst()) {
-            String storedHashedPassword = cursor.getString(0);
-            cursor.close();
-            return BCrypt.checkpw(password, storedHashedPassword);
+        Cursor cursor = null;
+        try {
+            cursor = db.rawQuery("SELECT password FROM adminUser WHERE email=?", new String[]{email});
+            if (cursor != null && cursor.moveToFirst()) {
+                String storedHashedPassword = cursor.getString(0);
+                return BCrypt.checkpw(password, storedHashedPassword);
+            }
+            return false;
+        } catch (SQLiteException e) {
+            Log.e("DataBase", "Error validating user: " + e.getMessage());
+            return false;
+        } finally {
+            if (cursor != null) cursor.close();
+            db.close();
         }
-        if (cursor != null) cursor.close();
-        return false;
     }
-
     public Boolean insertAdminUser(String name, String surname, String email, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
-        contentValues.put("name", name);
-        contentValues.put("surname", surname);
-        contentValues.put("email", email);
-        contentValues.put("password", hashedPassword);
-        long result = db.insert("adminUser", null, contentValues);
-        return result != -1;
+        try {
+            ContentValues contentValues = new ContentValues();
+            String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+            contentValues.put("name", name);
+            contentValues.put("surname", surname);
+            contentValues.put("email", email);
+            contentValues.put("password", hashedPassword);
+            long result = db.insert("adminUser", null, contentValues);
+            return result != -1;
+        } catch (SQLiteException e) {
+            Log.e("DataBase", "Error inserting admin user: " + e.getMessage());
+            return false;
+        } finally {
+            db.close();
+        }
     }
 
     public Boolean checkAdminEmail(String email) {
@@ -78,11 +93,18 @@ public class DataBase extends SQLiteOpenHelper {
 
     public boolean insertTask(String email, String task) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put("email", email);
-        contentValues.put("task", task);
-        long result = db.insert("tasks", null, contentValues);
-        return result != -1;
+        try {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("email", email);
+            contentValues.put("task", task);
+            long result = db.insert("tasks", null, contentValues);
+            return result != -1;
+        } catch (SQLiteException e) {
+            Log.e("DataBase", "Error inserting task: " + e.getMessage());
+            return false;
+        } finally {
+            db.close();
+        }
     }
 
     public ArrayList<String> getTasks(String email) {
@@ -98,20 +120,30 @@ public class DataBase extends SQLiteOpenHelper {
 
     public boolean updatePassword(String email, String newPassword) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-
-        // Hash the new password before storing it
-        String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
-        contentValues.put("password", hashedPassword);
-
-        // Update the password for the given email
-        int rowsAffected = db.update("adminUser", contentValues, "email=?", new String[]{email});
-        return rowsAffected > 0; // Return true if the password was updated successfully
+        try {
+            ContentValues contentValues = new ContentValues();
+            String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+            contentValues.put("password", hashedPassword);
+            int rowsAffected = db.update("adminUser", contentValues, "email=?", new String[]{email});
+            return rowsAffected > 0;
+        } catch (SQLiteException e) {
+            Log.e("DataBase", "Error updating password: " + e.getMessage());
+            return false;
+        } finally {
+            db.close();
+        }
     }
 
     public boolean deleteTask(String email, String task) {
         SQLiteDatabase db = this.getWritableDatabase();
-        int rowsDeleted = db.delete("tasks", "email=? AND task=?", new String[]{email, task});
-        return rowsDeleted > 0;
+        try {
+            int rowsDeleted = db.delete("tasks", "email=? AND task=?", new String[]{email, task});
+            return rowsDeleted > 0;
+        } catch (SQLiteException e) {
+            Log.e("DataBase", "Error deleting task: " + e.getMessage());
+            return false;
+        } finally {
+            db.close();
+        }
     }
 }
