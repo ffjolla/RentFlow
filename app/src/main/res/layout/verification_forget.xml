@@ -3,14 +3,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFDE7"
     android:padding="16dp">
+
+    <TextView
+        android:id="@+id/mainText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Verify"
+        android:textColor="#000000"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/subText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Enter the verification code sent to your email"
+        android:textColor="#757575"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/mainText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/verificationCodeField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter verification code"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="24dp"
+        android:hint="Verification Code"
+        android:inputType="number"
+        android:padding="12dp"
+        android:backgroundTint="#757575"
+        app:layout_constraintTop_toBottomOf="@id/subText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -18,7 +47,11 @@
         android:id="@+id/verifyButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#FFEB3B"
         android:text="Verify Code"
+        android:textColor="#000000"
+        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/verificationCodeField"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
