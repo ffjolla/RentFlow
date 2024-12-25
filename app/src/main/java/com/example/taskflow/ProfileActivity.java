@@ -33,7 +33,7 @@ public class ProfileActivity extends AppCompatActivity {
             // Fetch user details
             String userName = DataBase.getUserNameByEmail(email);
             // Placeholder join date - update if join date is stored in the database
-            String joinDate = "January 1, 2023";
+            String joinDate = "December 25, 2024";
 
             // Display user details
             emailView.setText(email);
