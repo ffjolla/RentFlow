@@ -58,7 +58,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         Toast.makeText(this, "Verification code sent to your email!", Toast.LENGTH_SHORT).show();
 
         // Navigate to VerificationActivity
-        Intent intent = new Intent(ForgotPasswordActivity.this, VerificationActivity.class);
+        Intent intent = new Intent(ForgotPasswordActivity.this, VerificationActivityForgetPWD.class);
         intent.putExtra("email", email);
         intent.putExtra("newPassword", newPassword);
         intent.putExtra("code", generatedCode);
