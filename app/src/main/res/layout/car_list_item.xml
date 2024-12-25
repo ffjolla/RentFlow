@@ -1,0 +1,60 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#FFFFFF"
+    android:elevation="4dp"
+    android:layout_margin="8dp">
+
+    <!-- Car Image -->
+    <ImageView
+        android:id="@+id/carImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="Car Image" />
+
+    <!-- Car Name -->
+    <TextView
+        android:id="@+id/carName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Car Name"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#000000" />
+
+    <!-- Car Price -->
+    <TextView
+        android:id="@+id/carPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price per hour"
+        android:textSize="16sp"
+        android:textColor="#757575" />
+
+    <!-- Car Specifications -->
+    <TextView
+        android:id="@+id/carSpecs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Specifications"
+        android:textSize="14sp"
+        android:textColor="#757575"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Book Now Button -->
+    <Button
+        android:id="@+id/bookButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#FFEB3B"
+        android:text="Book Now"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:padding="12dp" />
+</LinearLayout>

@@ -5,9 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import org.mindrot.jbcrypt.BCrypt;
 
 import androidx.annotation.Nullable;
+
+import org.mindrot.jbcrypt.BCrypt;
+
 import java.util.ArrayList;
 public class DataBase extends SQLiteOpenHelper {
     public static final String DBNAME = "login.db";
