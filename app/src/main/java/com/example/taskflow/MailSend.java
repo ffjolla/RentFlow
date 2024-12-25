@@ -12,8 +12,8 @@ import javax.mail.internet.MimeMessage;
 
 public class MailSend {
     public static void sendEmail(String recipient, String code) {
-        final String senderEmail = "lumhoxha780@gmail.com";
-        final String senderPassword = "pwvbtarmhbwqmgbl";
+        final String senderEmail = "fjolla.kadriu@student.uni-pr.edu";
+        final String senderPassword = "xonm ukoo mdwu pzsh";
 
         new Thread(() -> {
             try {

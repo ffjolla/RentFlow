@@ -101,7 +101,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Logout Button -->
+
     <Button
         android:id="@+id/logoutButton"
         android:layout_width="0dp"
