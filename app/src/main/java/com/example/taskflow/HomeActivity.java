@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +31,13 @@ public class HomeActivity extends AppCompatActivity {
         browseCarsButton = findViewById(R.id.browseCarsButton);
         viewBookingsButton = findViewById(R.id.viewBookingsButton);
 
+        Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+        if (fadeIn != null) {
+            usersNameEdit.startAnimation(fadeIn);
+            Log.d("HomeActivity", "Animation applied successfully.");
+        } else {
+            Log.e("HomeActivity", "Failed to load fade_in animation.");
+        }
         // Initialize database instance
         DataBase = new DataBase(this);
 
