@@ -7,7 +7,6 @@
     android:background="#FFFDE7"
     tools:context=".HomeActivity">
 
-    <!-- Welcome Text -->
     <TextView
         android:id="@+id/welcomeText"
         android:layout_width="wrap_content"
@@ -21,7 +20,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Profile Button -->
     <Button
         android:id="@+id/profileButton"
         android:layout_width="0dp"
@@ -37,7 +35,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Change Password Button -->
     <Button
         android:id="@+id/changePasswordButton"
         android:layout_width="0dp"
@@ -53,23 +50,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Task Manager Button -->
-    <Button
-        android:id="@+id/taskManagerButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:backgroundTint="#FFEB3B"
-        android:text="Manage Tasks"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/changePasswordButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- Browse Cars Button -->
     <Button
         android:id="@+id/browseCarsButton"
         android:layout_width="0dp"
@@ -81,11 +61,10 @@
         android:text="Browse Cars"
         android:textColor="#000000"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/taskManagerButton"
+        app:layout_constraintTop_toBottomOf="@id/changePasswordButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- View Bookings Button -->
     <Button
         android:id="@+id/viewBookingsButton"
         android:layout_width="0dp"
@@ -100,7 +79,6 @@
         app:layout_constraintTop_toBottomOf="@id/browseCarsButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
 
     <Button
         android:id="@+id/logoutButton"

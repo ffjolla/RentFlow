@@ -26,7 +26,6 @@ public class HomeActivity extends AppCompatActivity {
         profileButton = findViewById(R.id.profileButton);
         changePasswordButton = findViewById(R.id.changePasswordButton);
         logOutButton = findViewById(R.id.logoutButton);
-        taskManagerButton = findViewById(R.id.taskManagerButton);
         browseCarsButton = findViewById(R.id.browseCarsButton);
         viewBookingsButton = findViewById(R.id.viewBookingsButton);
 

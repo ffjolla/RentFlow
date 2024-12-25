@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "TaskFlow"
+rootProject.name = "RentFlow"
 include(":app")
  
