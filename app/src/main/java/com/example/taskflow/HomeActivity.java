@@ -55,8 +55,6 @@ public class HomeActivity extends AppCompatActivity {
         // Navigate to Change Password Activity
         changePasswordButton.setOnClickListener(view -> navigateToActivity(ChangePasswordActivity.class, email));
 
-        // Navigate to Task Manager Activity
-        taskManagerButton.setOnClickListener(view -> navigateToActivity(ToDoActivity.class, email));
 
         // Navigate to Browse Cars Activity
         browseCarsButton.setOnClickListener(view -> navigateToActivity(BrowseCarsActivity.class, email));
