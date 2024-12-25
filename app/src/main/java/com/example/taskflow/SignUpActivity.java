@@ -16,7 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.Random;
 import java.util.regex.Pattern;
 
-public class SignupActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
     private EditText nameFieldEdit, surnameFieldEdit, emailFieldEdit, passwordFieldEdit, confirmPasswordFieldEdit;
     DataBase DataBase;
@@ -54,7 +54,7 @@ public class SignupActivity extends AppCompatActivity {
                     String verificationCode = generateRandomCode();
                     MailSend.sendEmail(email, verificationCode);
 
-                    Intent intent = new Intent(SignupActivity.this, VerificationActivity.class);
+                    Intent intent = new Intent(SignUpActivity.this, VerificationActivity.class);
                     intent.putExtra("email", email);
                     intent.putExtra("code", verificationCode);
                     startActivity(intent);
@@ -65,7 +65,7 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
         loginRedirectEdit.setOnClickListener(view->{
-            Intent intent=new Intent(SignupActivity.this, LoginActivity.class);
+            Intent intent=new Intent(SignUpActivity.this, LoginActivity.class);
             startActivity(intent);
         });
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {

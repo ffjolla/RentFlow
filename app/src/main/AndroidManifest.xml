@@ -21,6 +21,48 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
+
+        <!-- Sign-Up Activity -->
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="true" />
+
+        <!-- Home Activity -->
+        <activity
+            android:name=".HomeActivity"
+            android:exported="true" />
+
+        <!-- Profile Activity -->
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="true" />
+
+        <!-- Change Password Activity -->
+        <activity
+            android:name=".ChangePasswordActivity"
+            android:exported="true" />
+
+        <!-- Verification Activity -->
+        <activity
+            android:name=".VerificationActivity"
+            android:exported="true" />
+
+
+
+        <!-- Browse Cars Activity -->
+        <activity
+            android:name=".BrowseCarsActivity"
+            android:exported="true" />
+
+        <!-- View Bookings Activity -->
+        <activity
+            android:name=".ViewBookingsActivity"
+            android:exported="true" />
+
+
     </application>
 
 </manifest>
