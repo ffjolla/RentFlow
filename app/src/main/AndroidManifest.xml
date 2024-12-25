@@ -59,6 +59,9 @@
         <activity
             android:name=".ViewBookingsActivity"
             android:exported="true" />
+        <activity
+            android:name=".ForgotPasswordActivity"
+            android:exported="true" />
 
 
     </application>

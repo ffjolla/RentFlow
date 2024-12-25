@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -223,4 +224,26 @@ public class DataBase extends SQLiteOpenHelper {
         }
         return bookings;
     }
+
+    public boolean resetPasswordForForgottenAccount(String email, String newPassword) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        // Hash the new password for security
+        String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+        values.put("password", hashedPassword);
+
+        // Debugging: Log the email and hashed password for verification
+        Log.d("Database", "Resetting password for email: " + email);
+        Log.d("Database", "New hashed password: " + hashedPassword);
+
+        // Update the correct table (adminUser)
+        int rows = db.update("adminUser", values, "email = ?", new String[]{email});
+
+        // Debugging: Log the number of rows updated
+        Log.d("Database", "Rows updated: " + rows);
+
+        return rows > 0; // Return true if at least one row is updated
+    }
+
 }
