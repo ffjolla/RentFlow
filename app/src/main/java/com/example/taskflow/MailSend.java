@@ -1,6 +1,5 @@
 package com.example.taskflow;
 
-
 import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.Message;
