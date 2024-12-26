@@ -4,50 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFDE7"
+    android:background="#000000"
     tools:context=".ViewBookingsActivity">
 
-    <!-- Header -->
     <TextView
         android:id="@+id/headerText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="My Bookings"
-        android:textSize="24sp"
-        android:textColor="#000000"
+        android:textSize="28sp"
         android:textStyle="bold"
+        android:textColor="#FFFFFF"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="40dp" />
 
-    <!-- List of Bookings -->
-    <ListView
-        android:id="@+id/bookingsListView"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewBookings"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:padding="8dp"
-        android:dividerHeight="8dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="#1E1E1E"
         app:layout_constraintTop_toBottomOf="@id/headerText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/returnAllButton" />
+        app:layout_constraintBottom_toTopOf="@id/returnAllButton">
 
-    <!-- Return All Cars Button -->
+        <ListView
+            android:id="@+id/bookingsListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:divider="#424242"
+            android:dividerHeight="1dp"
+            android:background="#FFFFFF"
+            android:textColor="#FFFFFF"
+            android:cacheColorHint="#FFFFFF" />
+    </androidx.cardview.widget.CardView>
+
     <Button
         android:id="@+id/returnAllButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Return All Cars"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="40dp"
+        android:text="Return All Bookings"
+        android:textSize="16sp"
         android:textStyle="bold"
-        android:backgroundTint="#FFEB3B"
-        android:textColor="#000000"
+        android:backgroundTint="#2196F3"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

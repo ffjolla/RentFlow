@@ -3,23 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="#000000">
+
 
     <EditText
         android:id="@+id/verificationCodeField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Enter verification code"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:padding="12dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp" />
+
 
     <Button
         android:id="@+id/verifyButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Verify Code"
+        android:backgroundTint="#FFFFFF"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:padding="12dp"
         app:layout_constraintTop_toBottomOf="@id/verificationCodeField"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+
