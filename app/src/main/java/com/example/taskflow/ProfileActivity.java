@@ -1,8 +1,13 @@
 package com.example.taskflow;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ProfileActivity extends AppCompatActivity {
     private TextView emailView, nameView, joinDateView;
     private Button changePasswordButton, backToHomeButton;
+    private LinearLayout profileHeader, profileDetails;
     DataBase DataBase;
 
     @Override
@@ -23,6 +29,8 @@ public class ProfileActivity extends AppCompatActivity {
         joinDateView = findViewById(R.id.joinDateView);
         changePasswordButton = findViewById(R.id.changePasswordButton);
         backToHomeButton = findViewById(R.id.backToHomeButton);
+        profileHeader = findViewById(R.id.profileHeader);
+        profileDetails = findViewById(R.id.profileDetails);
 
         DataBase = new DataBase(this);
 
@@ -41,8 +49,13 @@ public class ProfileActivity extends AppCompatActivity {
             joinDateView.setText(joinDate);
         }
 
+        // Add animations
+        applyFadeInAnimation(profileHeader);
+        applyFadeInAnimation(profileDetails);
+
         // Navigate to Change Password Activity
         changePasswordButton.setOnClickListener(view -> {
+            animateButtonPress(changePasswordButton);
             Intent intent = new Intent(ProfileActivity.this, ChangePasswordActivity.class);
             intent.putExtra("email", email);
             startActivity(intent);
@@ -50,10 +63,39 @@ public class ProfileActivity extends AppCompatActivity {
 
         // Navigate back to Home Activity
         backToHomeButton.setOnClickListener(view -> {
+            animateButtonPress(backToHomeButton);
             Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
             intent.putExtra("email", email);
             startActivity(intent);
-            finish();
+            finish(); // Trigger custom transition
         });
+    }
+
+    private void applyFadeInAnimation(LinearLayout layout) {
+        Animation fadeIn = new AlphaAnimation(0, 1);
+        fadeIn.setInterpolator(new AccelerateDecelerateInterpolator());
+        fadeIn.setDuration(800);
+        layout.startAnimation(fadeIn);
+    }
+
+    private void animateButtonPress(Button button) {
+        ObjectAnimator scaleDown = ObjectAnimator.ofPropertyValuesHolder(
+                button,
+                android.animation.PropertyValuesHolder.ofFloat("scaleX", 0.9f),
+                android.animation.PropertyValuesHolder.ofFloat("scaleY", 0.9f)
+        );
+        scaleDown.setDuration(200);
+        scaleDown.setInterpolator(new AccelerateDecelerateInterpolator());
+
+        scaleDown.setRepeatCount(1);
+        scaleDown.setRepeatMode(ObjectAnimator.REVERSE);
+
+        scaleDown.start();
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
     }
 }
